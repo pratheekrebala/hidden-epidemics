@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axios-debug-log": "^0.4.0",
+    "papaparse": "^4.3.7",
+    "soda-js": "^0.2.3"
+  }
+}
