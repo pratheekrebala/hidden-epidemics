@@ -26,15 +26,10 @@ do
     gdal_calc.py --quiet --overwrite --co COMPRESS=LZW -A $clipped --outfile=$reclassified --calc=$calculation --NoDataValue=-9999
 
     echo "Applying color-relief on $reclassified"
-    gdaldem color-relief -alpha -compute_edges -co COMPRESS=LZW $reclassified rgba1.txt $colorized
+    gdaldem color-relief -alpha -compute_edges -co COMPRESS=LZW $reclassified rgba.txt $colorized
 
     echo "Converting $colorized to $mbtiles."
     gdal2mbtiles --name $file --min-resolution=1 --max-resolution=8 --format="jpg" $colorized $mbtiles
-    #gdalwarp -t_srs EPSG:3857 -r near "${colorized}" "${colorized}_projected"
-    #gdal_translate -of mbtiles "${colorized}_projected" $mbtiles
-    #gdaladdo -r nearest $mbtiles
-
-    #rm "${colorized}_projected"
 
     echo "Exporting $mbtiles"
     rm -rf $tiles
