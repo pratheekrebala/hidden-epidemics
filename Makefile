@@ -14,7 +14,7 @@ PRISM:
 dist/source/%.tiff: PRISM
 	@echo "Thresholding $<"
 	mkdir -p dist/source
-	python3 PRISM_DegreeDay_Calculate.py $(increment) $*
+	python3 PRISM_DegreeDay_Calculate.py $*
 
 dist/clipped/%.tiff: dist/source/%.tiff
 	mkdir -p dist/clipped
